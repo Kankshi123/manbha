@@ -1,0 +1,418 @@
+@import "tailwindcss";
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   MANBHA – Design Tokens & Global Styles
+   ───────────────────────────────────────────────────────────────────────────── */
+
+@theme {
+  /* Colors */
+  --color-ivory: #F6F0E6;
+  --color-maroon: #0F3D33; /* Upgraded to Deep Royal Emerald Green */
+  --color-emerald-dark: #082620;
+  --color-gold: #B8893B;
+  --color-gold-light: #D4A855;
+  --color-charcoal: #16110F;
+  --color-blush: #E8C9C0;
+  --color-emerald: #0F3D33;
+  --color-cream: #FAF6EF;
+
+  /* Typography */
+  --font-display: 'Cormorant Garamond', 'Playfair Display', Georgia, serif;
+  --font-ui: 'Jost', 'Manrope', system-ui, sans-serif;
+  --font-devanagari: 'Noto Serif Devanagari', serif;
+
+  /* Spacing */
+  --spacing-section: clamp(4rem, 10vw, 10rem);
+
+  /* Transitions */
+  --ease-out-expo: cubic-bezier(0.19, 1, 0.22, 1);
+  --ease-in-out-quart: cubic-bezier(0.76, 0, 0.24, 1);
+}
+
+/* ── Base ─────────────────────────────────────────────────────────────────── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: auto; /* Lenis handles scrolling */
+  -webkit-text-size-adjust: 100%;
+  font-size: 16px;
+}
+
+body {
+  font-family: var(--font-ui);
+  background-color: var(--color-ivory);
+  color: var(--color-charcoal);
+  overflow-x: hidden;
+  cursor: none; /* Custom cursor on desktop */
+}
+
+@media (hover: none) {
+  body {
+    cursor: auto; /* Show default cursor on touch */
+  }
+}
+
+/* ── Film Grain Overlay ───────────────────────────────────────────────────── */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.04;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 128px 128px;
+}
+
+/* ── Selection ────────────────────────────────────────────────────────────── */
+::selection {
+  background: var(--color-maroon);
+  color: var(--color-ivory);
+}
+
+/* ── Scrollbar ────────────────────────────────────────────────────────────── */
+::-webkit-scrollbar {
+  width: 3px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-ivory);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-gold);
+}
+
+/* ── Typography Scale ─────────────────────────────────────────────────────── */
+.font-display { font-family: var(--font-display); }
+.font-ui { font-family: var(--font-ui); }
+.font-devanagari { font-family: var(--font-devanagari); }
+
+.text-display-hero {
+  font-family: var(--font-display);
+  font-size: clamp(3.5rem, 10vw, 11rem);
+  font-weight: 300;
+  line-height: 0.95;
+  letter-spacing: -0.02em;
+}
+
+.text-display-xl {
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 6vw, 7rem);
+  font-weight: 300;
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+
+.text-display-lg {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4vw, 5rem);
+  font-weight: 400;
+  line-height: 1.05;
+}
+
+.text-label {
+  font-family: var(--font-ui);
+  font-size: 0.65rem;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+.text-body {
+  font-family: var(--font-ui);
+  font-size: clamp(0.9rem, 1.2vw, 1.05rem);
+  font-weight: 300;
+  line-height: 1.75;
+}
+
+/* ── Layout Utilities ─────────────────────────────────────────────────────── */
+.section-padding {
+  padding-top: var(--spacing-section);
+  padding-bottom: var(--spacing-section);
+}
+
+.container-wide {
+  max-width: 1600px;
+  margin-inline: auto;
+  padding-inline: clamp(1.25rem, 5vw, 5rem);
+}
+
+.container-narrow {
+  max-width: 900px;
+  margin-inline: auto;
+  padding-inline: clamp(1.25rem, 5vw, 5rem);
+}
+
+/* ── Gold Hairline Divider ────────────────────────────────────────────────── */
+.gold-line {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--color-gold), transparent);
+}
+
+.gold-line-v {
+  width: 1px;
+  background: linear-gradient(180deg, transparent, var(--color-gold), transparent);
+}
+
+/* ── Arch Mask ────────────────────────────────────────────────────────────── */
+.arch-mask {
+  clip-path: path('M 0,80 Q 0,0 100,0 Q 200,0 200,80 L 200,300 L 0,300 Z');
+}
+
+.arch-clip {
+  border-radius: 50% 50% 0 0 / 30% 30% 0 0;
+  overflow: hidden;
+}
+
+/* ── Animated Stitch Line ─────────────────────────────────────────────────── */
+@keyframes stitch-draw {
+  from { stroke-dashoffset: 1000; }
+  to   { stroke-dashoffset: 0; }
+}
+
+.stitch-line {
+  stroke-dasharray: 8 6;
+  stroke-dashoffset: 1000;
+  animation: stitch-draw 2s var(--ease-out-expo) forwards;
+}
+
+/* ── Text Reveal Mask ────────────────────────────────────────────────────── */
+.word-mask {
+  overflow: hidden;
+  display: inline-block;
+}
+
+/* ── Magnetic Button ─────────────────────────────────────────────────────── */
+.magnetic-btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.4s var(--ease-out-expo);
+  will-change: transform;
+}
+
+/* ── Custom Cursor ───────────────────────────────────────────────────────── */
+.cursor-dot {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 8px;
+  height: 8px;
+  background: var(--color-maroon);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 10000;
+  transform: translate(-50%, -50%);
+  transition: transform 0.15s ease, width 0.3s ease, height 0.3s ease, background 0.3s ease;
+  will-change: transform;
+}
+
+.cursor-ring {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 36px;
+  height: 36px;
+  border: 1px solid var(--color-gold);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 10000;
+  transform: translate(-50%, -50%);
+  transition: transform 0.5s var(--ease-out-expo), width 0.4s ease, height 0.4s ease, opacity 0.3s ease;
+  will-change: transform;
+}
+
+.cursor-dot.is-hovering {
+  width: 4px;
+  height: 4px;
+  background: var(--color-gold);
+}
+
+.cursor-ring.is-hovering {
+  width: 60px;
+  height: 60px;
+  border-color: var(--color-maroon);
+  opacity: 0.6;
+}
+
+.cursor-dot.is-view {
+  background: var(--color-ivory);
+  width: 6px;
+  height: 6px;
+}
+
+.cursor-ring.is-view {
+  width: 80px;
+  height: 80px;
+  background: rgba(74, 14, 27, 0.9);
+  border-color: transparent;
+  opacity: 1;
+}
+
+/* ── Scroll Progress Bar ─────────────────────────────────────────────────── */
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 2px;
+  background: var(--color-gold);
+  z-index: 9998;
+  transform-origin: left;
+  will-change: transform;
+}
+
+/* ── WhatsApp FAB ────────────────────────────────────────────────────────── */
+.whatsapp-fab {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  z-index: 1000;
+  width: 56px;
+  height: 56px;
+  background: var(--color-emerald);
+  border: 1px solid var(--color-gold);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 20px rgba(15, 61, 51, 0.45);
+  transition: transform 0.3s var(--ease-out-expo), box-shadow 0.3s ease, background-color 0.3s ease;
+  will-change: transform;
+}
+
+.whatsapp-fab:hover {
+  transform: scale(1.1);
+  background: #154e42;
+  box-shadow: 0 8px 30px rgba(15, 61, 51, 0.6), 0 0 15px rgba(184, 137, 59, 0.3);
+}
+
+/* ── Lookbook Horizontal Scroll ──────────────────────────────────────────── */
+.lookbook-track {
+  display: flex;
+  gap: 2rem;
+  will-change: transform;
+}
+
+/* ── Image Reveal ────────────────────────────────────────────────────────── */
+.img-reveal-wrapper {
+  overflow: hidden;
+  position: relative;
+}
+
+.img-reveal-wrapper img {
+  transform-origin: center;
+  will-change: transform;
+}
+
+/* ── Preloader ───────────────────────────────────────────────────────────── */
+.preloader {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  background: var(--color-ivory);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.preloader-curtain-left,
+.preloader-curtain-right {
+  position: absolute;
+  inset-block: 0;
+  width: 50%;
+  background: var(--color-ivory);
+  z-index: 2;
+}
+.preloader-curtain-left  { left: 0; transform-origin: left;  }
+.preloader-curtain-right { right: 0; transform-origin: right; }
+
+/* ── Backdrop blur navbar ────────────────────────────────────────────────── */
+.navbar-scrolled {
+  background: rgba(246, 240, 230, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(184, 137, 59, 0.2);
+}
+
+/* ── Mobile Menu ─────────────────────────────────────────────────────────── */
+.mobile-menu {
+  position: fixed;
+  inset: 0;
+  z-index: 9000;
+  background: var(--color-maroon);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+}
+
+/* ── Cards / hover effects ───────────────────────────────────────────────── */
+.card-hover-zoom img {
+  transition: transform 0.8s var(--ease-out-expo);
+}
+.card-hover-zoom:hover img {
+  transform: scale(1.06);
+}
+
+/* ── Focus visible ───────────────────────────────────────────────────────── */
+:focus-visible {
+  outline: 2px solid var(--color-gold);
+  outline-offset: 3px;
+}
+
+/* ── Reduced motion ──────────────────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  .stitch-line {
+    stroke-dashoffset: 0;
+  }
+}
+
+/* ── Utilities ───────────────────────────────────────────────────────────── */
+.clip-arch {
+  border-radius: 9999px 9999px 0 0;
+  overflow: hidden;
+}
+
+.italic-word {
+  font-style: italic;
+  font-weight: 300;
+}
+
+.gold-text { color: var(--color-gold); }
+.maroon-text { color: var(--color-maroon); }
+.ivory-text { color: var(--color-ivory); }
+
+.bg-maroon { background-color: var(--color-maroon); }
+.bg-ivory { background-color: var(--color-ivory); }
+.bg-charcoal { background-color: var(--color-charcoal); }
+.bg-emerald-dark { background-color: var(--color-emerald); }
+
+/* ── Rental card back-face swap ───────────────────────────────────────────── */
+.rental-card-img-back {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+.rental-card:hover .rental-card-img-back {
+  opacity: 1;
+}
+.rental-card:hover .rental-card-img-front {
+  opacity: 0;
+}
+.rental-card-img-front {
+  transition: opacity 0.5s ease;
+}
