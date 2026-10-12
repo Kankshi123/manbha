@@ -115,12 +115,13 @@ export const media = {
 
   // ── Craft / Fabrics ─────────────────────────────────────────────────────────
   craft: {
-    zardozi: `https://images.unsplash.com/photo-1617627143750-d86bc21e42bb${UPS}`,
-    gotaPatti: `https://images.unsplash.com/photo-1610030469983-98e550d6193c${UPS}`,
-    resham: `https://images.unsplash.com/photo-1614613535308-eb5fbd3d2c17${UPS}`,
-    chikankari: `https://images.unsplash.com/photo-1598554747436-c9293d6a588f${UPS}`,
-    mirrorWork: `https://images.unsplash.com/photo-1509631179647-0177331693ae${UPS}`,
-    handEmbroidery: `https://images.unsplash.com/photo-1467043237213-65f2da53396f${UPS}`,
+    zardozi: '/craft/zardozi.jpg',
+    gotaPatti: '/craft/gota-patti.jpg',
+    resham: '/craft/resham.jpg',
+    chikankari: '/craft/chikankari.jpg',
+    mirrorWork: '/craft/mirror-work.jpg',
+    handEmbroidery: '/craft/hand-embroidery.jpg',
+    digital: '/craft/digital-prints.jpg',
     studioDetail: `https://images.unsplash.com/photo-1558618666-fcd25c85cd64${UP}`,
   },
 

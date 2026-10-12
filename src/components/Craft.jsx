@@ -9,7 +9,7 @@ const techniques = [
   { id: 'chikankari', name: 'Chikankari', nameHindi: 'चिकनकारी', description: 'Delicate Lucknawi shadow embroidery — quiet, refined, iconic.', image: media.craft.chikankari },
   { id: 'mirrorWork', name: 'Mirror Work', nameHindi: 'शीशे का काम', description: 'Gujarati and Rajasthani glass embellishments that catch every light.', image: media.craft.mirrorWork },
   { id: 'handEmbroidery', name: 'Hand Embroidery', nameHindi: 'हस्त-कढ़ाई', description: 'Freehand motifs crafted by our artisans — unique to every piece.', image: media.craft.handEmbroidery },
-  { id: 'digital', name: 'Digital Prints', nameHindi: 'डिजिटल प्रिंट', description: 'Contemporary photographic and graphic prints on premium fabric.', image: null },
+  { id: 'digital', name: 'Digital Prints', nameHindi: 'डिजिटल प्रिंट', description: 'Contemporary photographic and graphic prints on premium fabric.', image: media.craft.digital },
 ];
 
 const fabrics = [

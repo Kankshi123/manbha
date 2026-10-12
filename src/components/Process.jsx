@@ -76,7 +76,7 @@ export default function Process() {
       id="process"
       ref={sectionRef}
       style={{
-        background: 'var(--color-charcoal)',
+        background: 'var(--color-emerald)',
         position: 'relative',
       }}
     >
@@ -173,7 +173,7 @@ export default function Process() {
                   height: '8px',
                   borderRadius: '50%',
                   background: 'var(--color-gold)',
-                  border: '2px solid var(--color-charcoal)',
+                  border: '2px solid var(--color-emerald)',
                 }}
               />
             ))}

@@ -69,7 +69,7 @@ export default function Lookbook() {
         id="lookbook"
         ref={sectionRef}
         style={{
-          background: 'var(--color-charcoal)',
+          background: 'var(--color-emerald)',
           overflow: 'hidden',
           position: 'relative',
         }}
